@@ -7,6 +7,9 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const navLinks = document.querySelectorAll('.nav__link');
+const section1 = document.querySelector('#section--1');
 
 const openModal = function (e) {
   e.preventDefault();
@@ -30,33 +33,26 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
+/////////////////////////////
+//Page navigation
 
+//Scrolling
 btnScrollTo.addEventListener('click', function (e) {
   e.preventDefault();
   const s1coords = section1.getBoundingClientRect();
   //scroling
   section1.scrollIntoView({ block: 'start', behavior: 'smooth' });
-  /*
- console.log(s1coords);
+});
 
-  console.log(e.target.getBoundingClientRect());
-  console.log('Current scroll (x/y)', scrollX, scrollY);
-
-console.log(
-    'height/width viewport',
-    document.documentElement.clientHeight,
-    document.documentElement.clientWidth
-  );
-
-  window.scrollTo(s1coords.left, s1coords.top + scrollY + 80);
-  window.scrollTo({
-    left: s1coords.left,
-    top: s1coords.top + scrollY + 80,
-    behavior: 'smooth',
+navLinks.forEach(function (e) {
+  e.addEventListener('click', function (e) {
+    e.preventDefault();
+    const id = this.getAttribute('href');
+    console.log(id);
+    document
+      .querySelector(id)
+      .scrollIntoView({ block: 'start', behavior: 'smooth' });
   });
-*/
 });
 
 /////////////////////////////////////////////////////////////////////////
@@ -94,6 +90,36 @@ header.append(message);
 document
   .querySelector('.btn--close--cookie')
   .addEventListener('click', () => message.remove()); //message.parentElement.removeChild(message); // DOM traversing
+*/
+
+/*
+  const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  e.preventDefault();
+  const s1coords = section1.getBoundingClientRect();
+  //scroling
+  section1.scrollIntoView({ block: 'start', behavior: 'smooth' });
+});
+
+ console.log(s1coords);
+
+  console.log(e.target.getBoundingClientRect());
+  console.log('Current scroll (x/y)', scrollX, scrollY);
+
+console.log(
+    'height/width viewport',
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
+  );
+
+  window.scrollTo(s1coords.left, s1coords.top + scrollY + 80);
+  window.scrollTo({
+    left: s1coords.left,
+    top: s1coords.top + scrollY + 80,
+    behavior: 'smooth',
+  });
 */
 //#endregion
 
