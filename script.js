@@ -8,8 +8,12 @@ const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
+const nav = document.querySelector('.nav');
 const navLinks = document.querySelectorAll('.nav__link');
 const section1 = document.querySelector('#section--1');
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
 
 const openModal = function (e) {
   e.preventDefault();
@@ -43,7 +47,7 @@ btnScrollTo.addEventListener('click', function (e) {
   //scroling
   section1.scrollIntoView({ block: 'start', behavior: 'smooth' });
 });
-
+/*
 navLinks.forEach(function (e) {
   e.addEventListener('click', function (e) {
     e.preventDefault();
@@ -54,6 +58,59 @@ navLinks.forEach(function (e) {
       .scrollIntoView({ block: 'start', behavior: 'smooth' });
   });
 });
+*/
+
+//event delegation
+//1. add event listener to common parent element
+//2. Determine what element originated the event
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+  //Matching strategy
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    console.log(id);
+    document
+      .querySelector(id)
+      .scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }
+});
+
+//tabbed component
+tabsContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab');
+  //guard clause (modern way)
+  if (!clicked) return;
+  //if (clicked) {} // traditional way
+  //remove active classes
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+
+  //Activate tab
+  clicked.classList.add('operations__tab--active');
+
+  //Activate content area
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
+});
+
+//menu fade animation
+const handleHover = function (event) {
+  if (event.target.classList.contains('nav__link')) {
+    const link = event.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+
+    siblings.forEach(el => {
+      if (el !== link) el.style.opacity = this;
+    });
+    logo.style.opacity = this;
+  }
+};
+nav.addEventListener('mouseover', handleHover.bind(0.5));
+nav.addEventListener('mouseout', handleHover.bind(1));
+
+//
 
 /////////////////////////////////////////////////////////////////////////
 //#region ------ Lecture 186 Selecting, creating, deleting elements -----
@@ -218,6 +275,40 @@ document.querySelector('.nav').addEventListener('click', function (e) {
   this.style.backgroundColor = randomColor(0, 255);
   console.log('nav', e.target, e.currentTarget);
   console.log(e.currentTarget === this);
+});
+*/
+//#endregion
+
+//#region ------ Lecture 193 DOM traversing -----
+/*
+const h1 = document.querySelector('h1');
+
+//going downwards: child
+console.log(h1.querySelectorAll('.highlight'));
+console.log(h1.childNodes);
+console.log(h1.children);
+console.log((h1.firstElementChild.style.color = 'white'));
+console.log((h1.lastElementChild.style.color = 'orangered'));
+
+//going upwards: parents
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+
+h1.closest('.header').style.background = 'var(--gradient-secondary)';
+h1.closest('h1').style.background = 'var(--gradient-primary)';
+
+//Going sideways: siblings
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
+
+console.log(h1.previousSibling);
+console.log(h1.nextSibling);
+
+console.log(h1.parentElement.children);
+[...h1.parentElement.children].forEach(function (el) {
+  if (el !== h1) {
+    el.style.transform = 'scale(0.5)';
+  }
 });
 */
 //#endregion
