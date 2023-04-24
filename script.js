@@ -150,11 +150,48 @@ logo.className = 'jay';
 //#endregion
 
 //#region ------ Lecture 189 Types of events -----
-
+/*
 const h1 = document.querySelector('h1');
-
-h1.addEventListener('mouseenter', function (e) {
+const listnerH1 = function (e) {
   alert('AddEventListener: Great! you are reading the heading :D');
+};
+h1.addEventListener('mouseenter', listnerH1);
+
+//old
+h1.onmouseenter = function (e) {
+  alert('onmouseenter: Great!');
+};
+h1.removeEventListener('mouseenter', listnerH1);
+*/
+//#endregion
+
+//#region ------ Lecture 190-191 bubbling and capturing (propagation)-----
+/*
+//rgb(255,255,255)
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+const randomColor = (min, max) =>
+  `rgb(${randomInt(min, max)},${randomInt(min, max)},${randomInt(min, max)})`;
+console.log(randomColor(0, 255));
+
+document.querySelector('.nav__link').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor(0, 255);
+  console.log('Link', e.target, e.currentTarget);
+  console.log(e.currentTarget === this);
+
+  //stop propagation
+  // e.stopPropagation();
+});
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor(0, 255);
+  console.log('container', e.target, e.currentTarget);
+  console.log(e.currentTarget === this);
 });
 
+document.querySelector('.nav').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor(0, 255);
+  console.log('nav', e.target, e.currentTarget);
+  console.log(e.currentTarget === this);
+});
+*/
 //#endregion
