@@ -276,6 +276,7 @@ const slider = function () {
   });
 };
 slider();
+
 /////////////////////////////////////////////////////////////////////////
 //#region ------ Lecture 186 Selecting, creating, deleting elements -----
 /*
@@ -475,4 +476,22 @@ console.log(h1.parentElement.children);
   }
 });
 */
+//#endregion
+
+//#region ------ Lecture 202 Lifecycle if DOM events -----
+
+document.addEventListener('DOMContentLoaded', function (e) {
+  console.log('Html is ready', e);
+});
+
+window.addEventListener('load', function (e) {
+  console.log('Page is loaded', e);
+});
+
+// window.addEventListener('beforeunload', function (e) {
+//   e.preventDefault();
+//   console.log(e);
+//   e.returnValue = '';
+// });
+
 //#endregion

@@ -1,17 +1,17 @@
 /* The page is NOT responsive. You can implement responsiveness yourself if you wanna have some fun 😃 */
 
 :root {
-  --color-primary: #5ec576;
-  --color-secondary: #ffcb03;
+  --color-primary: #225dab;
+  --color-secondary: #fdd504;
   --color-tertiary: #ff585f;
-  --color-primary-darker: #4bbb7d;
-  --color-secondary-darker: #ffbb00;
+  --color-primary-darker: #1f4dab;
+  --color-secondary-darker: #ffc803;
   --color-tertiary-darker: #fd424b;
-  --color-primary-opacity: #5ec5763a;
+  --color-primary-opacity: #fdd5043a;
   --color-secondary-opacity: #ffcd0331;
   --color-tertiary-opacity: #ff58602d;
-  --gradient-primary: linear-gradient(to top left, #39b385, #9be15d);
-  --gradient-secondary: linear-gradient(to top left, #ffb003, #ffcb03);
+  --gradient-primary: linear-gradient(to top left, #225dab, #fdd504);
+  --gradient-secondary: linear-gradient(to top left, #ffb003, #fdd504);
 }
 
 * {
@@ -132,7 +132,7 @@ img {
 }
 
 .nav__logo {
-  height: 4.5rem;
+  height: 6.5rem;
   transition: all 0.3s;
 }
 
@@ -161,14 +161,14 @@ img {
   padding: 0.8rem 2.5rem;
   border-radius: 3rem;
   background-color: var(--color-primary);
-  color: #222;
+  color: #fff;
 }
 
 .nav__link--btn:hover,
 .nav__link--btn:active {
   color: inherit;
   background-color: var(--color-primary-darker);
-  color: #333;
+  color: #fff;
 }
 
 /* HEADER */
@@ -571,7 +571,7 @@ h4 {
 }
 
 .footer__logo {
-  height: 5rem;
+  height: 10rem;
   display: block;
   margin: 0 auto;
   margin-bottom: 5rem;
